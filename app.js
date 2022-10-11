@@ -4,6 +4,10 @@ let path = require("path");
 let cookieParser = require("cookie-parser");
 let logger = require("morgan");
 require("dotenv").config();
+const bcrypt = require("bcryptjs");
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
 
 let indexRouter = require("./routes/index");
 let usersRouter = require("./routes/users");
@@ -15,6 +19,11 @@ const mongoDB = process.env.mongo_db;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
+
+app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.urlencoded({ extended: false }));
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

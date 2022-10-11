@@ -1,8 +1,36 @@
 body {
   padding: 50px;
+  color: white;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgb(13, 13, 13);
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
+}
+
+button {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid white;
+}
+
+button:hover {
+  background-color: #00b7ff;
+}
+
+#signup-form {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(37, 37, 37);
+  justify-content: center;
+  width: 15rem;
+  padding: 2rem;
+  gap: 10px;
+  border: 1px solid rgb(112, 112, 112);
+}
+
+#signup-form > input {
+  padding: 0.3rem;
+  border-radius: none;
 }
