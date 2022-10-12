@@ -18,4 +18,13 @@ block content
       else
         a(href='/signup') signup
         a(href='/signin') login
-        
+
+  div(class='messages')
+    each message in messages
+      div(class='message')
+      h3(class='message-title')=message.title 
+      if user
+        if user.member
+          p(class='message-user')=message.user.username
+      p=message.dateF
+      p=message.message

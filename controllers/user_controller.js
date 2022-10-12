@@ -87,21 +87,21 @@ exports.postMember = [
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.render("member", { errors: errors.array() });
-    } else {
-      if (req.body.passcode.toLowerCase() === "mellon") {
-        user
-          .findOneAndUpdate({ _id: req.user._id }, { member: true })
-          .exec((err) => {
-            if (err) {
-              return next(err);
-            }
-            res.redirect("/");
-          });
-      } else {
-        res.render("member", {
-          errors: ["incorrect passcode, speak friend and enter"],
+      return;
+    }
+    if (req.body.passcode.toLowerCase() === "mellon") {
+      user
+        .findOneAndUpdate({ _id: req.user._id }, { member: true })
+        .exec((err) => {
+          if (err) {
+            return next(err);
+          }
+          res.redirect("/");
         });
-      }
+    } else {
+      res.render("member", {
+        errors: ["incorrect passcode, speak friend and enter"],
+      });
     }
   },
 ];
