@@ -5,7 +5,7 @@ const { DateTime } = require("luxon");
 const messageSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: "user" },
   title: { type: String, required: true, maxLength: 100 },
-  message: { type: String, required: true, maxLength: 500 },
+  message: { type: String, required: true, maxLength: 2000 },
   date: { type: Date },
 });
 

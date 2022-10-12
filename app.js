@@ -4,10 +4,8 @@ let path = require("path");
 let cookieParser = require("cookie-parser");
 let logger = require("morgan");
 require("dotenv").config();
-const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
 
 let indexRouter = require("./routes/index");
 let usersRouter = require("./routes/users");

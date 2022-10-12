@@ -1,7 +1,6 @@
-extends layout
+extends layout 
 
 block content
-  
   div(class='nav')
     h4(class='logo nav-content' ) 
       a(href='/') MEMBERS ONLY
@@ -14,8 +13,17 @@ block content
         if !user.admin
           a(href='/admin') become admin
         p=user.username
-        a(href='signout') logout
+        a(href='logout') logout
       else
         a(href='/signup') signup
-        a(href='/signin') login
-        
+        a(href='/login') login
+
+  if user
+    form(method='POST' id='form-message')
+      label(for='title') Title:
+      input(name='title' type='text')
+      label(for='message') Message: 
+      textarea(name='message')
+      button(type='submit') Submit
+  else
+    p please log in

@@ -1,7 +1,6 @@
-extends layout
+extends layout 
 
 block content
-  
   div(class='nav')
     h4(class='logo nav-content' ) 
       a(href='/') MEMBERS ONLY
@@ -14,8 +13,21 @@ block content
         if !user.admin
           a(href='/admin') become admin
         p=user.username
-        a(href='signout') logout
+        a(href='logout') logout
       else
         a(href='/signup') signup
-        a(href='/signin') login
-        
+        a(href='/login') login
+
+  if user
+    form(id='form-member' method='POST')
+      label(for='passcode') Speak friend and enter 
+      input(name='passcode' type='text')
+      button(type='submit') Enter
+  else
+    p please log in
+
+  if errors
+    ul
+      for error in errors
+        li= error.msg
+  
